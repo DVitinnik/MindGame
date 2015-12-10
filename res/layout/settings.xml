@@ -16,25 +16,32 @@
                   android:textColor="@android:color/white" android:textStyle="bold" android:textSize="20sp"
                   android:gravity="center" android:layout_margin="10dp"
                   android:text="Выберите сложность" />
-        <Switch
-                android:layout_width="172dp"
-                android:layout_height="wrap_content"
-                android:text="Легко"
-                android:id="@+id/switch1" android:layout_marginTop="50dp" android:layout_marginLeft="10dp"
-                android:checked="false"/>
-        <Spinner android:layout_width="fill_parent" android:layout_height="wrap_content" android:id="@+id/spinner1"
-                 android:spinnerMode="dialog"/>
-        <Switch android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Средне"
-                android:id="@+id/switch2" android:layout_marginTop="10dp" android:layout_marginLeft="10dp"
-                android:checked="false"/>
-        <Spinner
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/spinner2" android:spinnerMode="dialog"/>
-        <Spinner android:layout_width="fill_parent" android:layout_height="wrap_content" android:id="@+id/spinner3"
-                 android:spinnerMode="dialog"/>
-        <Switch android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Сложно"
-                android:id="@+id/switch3" android:layout_marginTop="10dp" android:layout_marginLeft="10dp"
-                android:checked="false"/>
+        <RadioGroup
+                android:layout_width="fill_parent" android:id="@+id/radioGroup"
+                android:layout_height="match_parent" android:layout_marginTop="10dp">
+            <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Легко"
+                    android:id="@+id/radioButton1"/>
+            <Spinner android:layout_width="match_parent" android:layout_height="wrap_content" android:id="@+id/spinner1"
+                     android:spinnerMode="dialog"/>
+            <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Средне"
+                    android:id="@+id/radioButton2"/>
+            <Spinner
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/spinner2" android:spinnerMode="dialog"/>
+            <Spinner android:layout_width="match_parent" android:layout_height="wrap_content" android:id="@+id/spinner3"
+                     android:spinnerMode="dialog"/>
+            <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Сложно"
+                    android:id="@+id/radioButton3"/>
+        </RadioGroup>
     </LinearLayout>
 </LinearLayout>

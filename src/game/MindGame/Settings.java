@@ -1,18 +1,22 @@
 package game.MindGame;
 
+import android.app.Activity;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.preference.PreferenceManager;
 import android.widget.ImageView;
 
 
 /**
- * Created by DVitinnik on 20-Oct-15.
+ * Created by Maxis55 on 20-Oct-15.
  */
 public class Settings implements Parcelable {
     public static final Creator<Settings> CREATOR = new SettingsCreator();
-
     String fileName = "settings.xml";
     int levelDifficulty;
+
 
     @Override
     public String toString() {
@@ -62,13 +66,40 @@ public class Settings implements Parcelable {
         this.levelDifficulty = levelDifficulty;
     }
 
+    //public SharedPreferences getSharedPreferences (Context context) {
+    //    this.context = context;
+
+    //    return context.getSharedPreferences("FILE", 0);
+    //}
 
     public int[] getLevelNumbers() {
         //1 - DotLevel
         //2 - MathLevel
         //3 - FigureLevel
-        return new int[]{3};
+        int k = 1;
+        Context applicationContext = SettingsActivity.getContextOfApplication();
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(applicationContext);
+        boolean b1checked = prefs.getBoolean("Button 1",false);
+        boolean b2checked = prefs.getBoolean("Button 2",false);
+        boolean b3checked = prefs.getBoolean("Button 3",false);
+        if (b1checked)
+            k=1;
+        if (b2checked)
+            k=2;
+        if (b3checked)
+            k=3;
+        int spin1 = prefs.getInt("Spinner 1",0);
+        int spin2 = prefs.getInt("Spinner 2",1);
+        int spin3 = prefs.getInt("Spinner 3",2);
+        if (k==1)
+            return new int[]{spin1+1};
+        if (k==2)
+            return new int[]{spin2+1,spin3+1};
+        if (k==3)
+            return new int[]{1,2,3};
+        return new int[]{1};
     }
+
 
     public Level getLevel(int number, ImageView imageView) {
         switch (number) {
@@ -82,6 +113,7 @@ public class Settings implements Parcelable {
                 return null;
         }
     }
+
 
     @Override
     public int describeContents() {
